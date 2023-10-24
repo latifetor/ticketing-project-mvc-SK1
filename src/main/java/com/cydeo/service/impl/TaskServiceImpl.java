@@ -62,17 +62,23 @@ public class TaskServiceImpl extends AbstractMapService<TaskDTO, Long> implement
 
     @Override
     public List<TaskDTO> findTasksByManager(UserDTO manager) {
-        return findAll().stream().filter(task -> task.getProject().getAssignedManager().equals(manager)).collect(Collectors.toList());
+        return findAll().stream()
+                .filter(task -> task.getProject().getAssignedManager().equals(manager))
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<TaskDTO> findAllTasksByStatus(Status status) {
-        return findAll().stream().filter(task -> task.getTaskStatus().equals(Status.COMPLETE)).collect(Collectors.toList());
+        return findAll().stream()
+                .filter(task -> task.getTaskStatus().equals(Status.COMPLETE))
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<TaskDTO> findAllTasksByStatusIsNot(Status status) {
-        return findAll().stream().filter(task -> !task.getTaskStatus().equals(Status.COMPLETE)).collect(Collectors.toList());
+        return findAll().stream()
+                .filter(task -> !task.getTaskStatus().equals(Status.COMPLETE))
+                .collect(Collectors.toList());
     }
 
     @Override
